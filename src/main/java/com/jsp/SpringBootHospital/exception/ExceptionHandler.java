@@ -20,6 +20,16 @@ public class ExceptionHandler  extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<ResponseStructure<String>>(stru,HttpStatus.NOT_FOUND);
 	}
 	
+	@org.springframework.web.bind.annotation.ExceptionHandler
+	public  ResponseEntity<ResponseStructure<String>> getException(AddressNotFoundException ex)
+	{
+		ResponseStructure<String> stru = new ResponseStructure<String>();
+		stru.setMessage("address id is not present");
+		stru.setStatus(HttpStatus.NOT_FOUND.value());
+		stru.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(stru,HttpStatus.NOT_FOUND);
+	}
+	
 	
 
 }

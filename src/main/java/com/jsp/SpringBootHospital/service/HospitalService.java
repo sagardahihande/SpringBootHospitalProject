@@ -29,7 +29,7 @@ public class HospitalService {
 			return s;
 		}
 		
-		return null;
+		throw  new HospitalNotFoundException("failed to save the data");
 	}
 	
 	

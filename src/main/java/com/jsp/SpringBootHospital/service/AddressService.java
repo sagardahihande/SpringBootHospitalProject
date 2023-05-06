@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.jsp.SpringBootHospital.dao.Addressdao;
 import com.jsp.SpringBootHospital.dto.Address;
+
+import com.jsp.SpringBootHospital.exception.AddressNotFoundException;
 import com.jsp.SpringBootHospital.util.ResponseStructure;
 
 @Service
@@ -54,7 +56,7 @@ public class AddressService {
 		s.setData(add);
 		return s;
 	}
-	return null;
+	throw new AddressNotFoundException("Address id is not present");
 	}
 	
 	public ResponseStructure<Address> deleteAddress(int id)
