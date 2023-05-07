@@ -1,5 +1,7 @@
 package com.jsp.SpringBootHospital.dao;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -31,7 +33,12 @@ public class Addressdao {
 	
 	public Address findAddress(int id)
 	{
-	  return repo.findById(id).get();
+	  Optional<Address> optional =repo.findById(id);
+	  if(optional.isPresent())
+	  {
+		  return optional.get();
+	  }
+	  return null;
 	}
 	
 	public Address deleteAddress(int id)
